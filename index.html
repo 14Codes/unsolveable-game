@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Unsolvable Riddle</title>
+    <title>Guess the Number</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -17,30 +17,30 @@
     </style>
   </head>
   <body>
-    <h1>The Unsolvable Riddle</h1>
-    <p>Welcome to the game of infinite mystery!</p>
-    <p>Can you solve the unsolvable riddle?</p>
-    <p>There are no right or wrong answers, but finding a solution is impossible.</p>
-    <p>Are you ready? Let's begin!</p>
+    <h1>Guess the Number</h1>
+    <p>Welcome to the number guessing game! Can you guess the correct number?</p>
+
+    <input type="number" id="guessInput" placeholder="Enter your guess" />
+    <br />
+    <button onclick="checkGuess()">Guess</button>
+
     <script>
-      function startGame() {
-        alert('Buckle up and prepare to be challenged!');
-        unsolvableRiddle();
-      }
+      var targetNumber = Math.floor(Math.random() * 100) + 1;
+      var attempts = 0;
 
-      function unsolvableRiddle() {
-        var randomNum = Math.floor(Math.random() * 3) + 1;
-        var answer = prompt('Choose a number between 1 and 3:');
+      function checkGuess() {
+        var guess = parseInt(document.getElementById("guessInput").value);
+        attempts++;
 
-        if (answer === randomNum.toString()) {
-          alert('You got it right! But alas, there is no solution to this riddle.');
+        if (guess === targetNumber) {
+          alert("Congratulations! You guessed the correct number in " + attempts + " attempt(s)!");
+        } else if (guess < targetNumber) {
+          alert("Too low. Try again!");
         } else {
-          alert('Incorrect! The game goes on, searching for an answer that does not exist.');
-          unsolvableRiddle();
+          alert("Too high. Try again!");
         }
       }
     </script>
-    <button onclick="startGame()">Start The Unsolvable Riddle</button>
   </body>
 </html>
 ```
